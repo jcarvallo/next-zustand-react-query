@@ -1,15 +1,10 @@
-import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const queryClient = new QueryClient();
+import Provider from "@/provider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider>
       <Component {...pageProps} />
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    </Provider>
   );
 }

@@ -3,23 +3,12 @@ import type {
   UseMutationOptions,
 } from "@tanstack/react-query";
 
-type QueryOptions = {
-  enabled?: boolean;
-  refetchOnWindowFocus?: boolean | "always";
-  staleTime?: number | "Infinity";
-  cacheTime?: number | "Infinity";
-};
-type MutationOptions = {};
-
 type PostId = {
   id?: number;
+  PostId?: number;
 };
 
-type PostsTitle = {
-  title?: string;
-};
-
-type Params = PostId | PostsTitle;
+type Params = PostId;
 
 type ApiFetchModel = {
   key: string;
