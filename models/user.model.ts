@@ -17,13 +17,13 @@ interface Company {
   bs: string;
 }
 
-export type USerModel = {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: Address;
-  phone: string;
-  website: string;
-  company: Company;
+export type UserModel = {
+  id?: number;
+  name?: string;
+  username?: string;
+  email?: string;
+  address?: Address;
+  phone?: string;
+  website?: string;
+  company?: Company;
 };

@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useApiQuery } from "@/hooks";
 import { USerModel } from "@/models";
+import { useStore } from "@/store";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -35,9 +37,10 @@ export interface IHomeProps {
   columns?: any;
 }
 
-const withHome = (Component: React.FC<any>) => (props: any) => {
-  const { data = [], isLoading } = useApiQuery<USerModel[]>({
-    key: "users",
+const withHome = (Component: React.FC<IHomeProps>) => (props: any) => {
+  const { setUser } = useStore();
+  const { data, isLoading } = useApiQuery<USerModel[]>({
+    key: ["users"],
     url: "/users",
     method: "get",
     queryOptions: {
@@ -45,8 +48,12 @@ const withHome = (Component: React.FC<any>) => (props: any) => {
       staleTime: Infinity,
     },
   });
+
+  useEffect(() => {
+    if (data) setUser(data);
+  }, [data]);
+
   const actions = {
-    data,
     isLoading,
     columns,
   };

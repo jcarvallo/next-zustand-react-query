@@ -5,7 +5,7 @@ import { useFetch } from "@/hooks";
 function useApiMutation<T>(req: ApiFetchModel) {
   let fetch = useFetch<T>(req);
   return useMutation({
-    mutationKey: [req.key],
+    mutationKey: req.key,
     mutationFn: fetch,
     ...req.mutationOptions,
   });

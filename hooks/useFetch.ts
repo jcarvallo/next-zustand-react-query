@@ -6,7 +6,9 @@ function useFetch<T>(req: ApiFetchModel) {
     try {
       let { method } = req;
       req.data = ["post", "put"].includes(method) ? body : {};
-      const { data, error } = await HttpClient[method](req);
+      const { data, error }: { data: T; error: Error } = await HttpClient[
+        method
+      ](req);
 
       if (error) throw error;
 
