@@ -4,8 +4,8 @@ import { Box } from "@mui/material";
 import withHome, { IHomeProps } from "./withHome";
 import { useStore } from "@/store";
 
-function Home({ isLoading, columns }: IHomeProps) {
-  const { users } = useStore();
+function Home({ isLoading }: IHomeProps) {
+  const { users, columns } = useStore();
 
   if (isLoading) return <Loading />;
 

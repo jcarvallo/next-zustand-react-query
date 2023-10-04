@@ -1,6 +1,7 @@
-import type { ApiFetchModel } from "@/models";
+
 import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "@/hooks";
+import { ApiFetchModel } from "@/models/api.fetch.model";
 
 function useApiQuery<T>(req: ApiFetchModel) {
   return useQuery({

@@ -17,7 +17,7 @@ interface Company {
   bs: string;
 }
 
-export type UserModel = {
+export interface UserModel {
   id?: number;
   name?: string;
   username?: string;

@@ -1,61 +1,25 @@
-import { useEffect } from "react";
 import { useApiQuery } from "@/hooks";
-import { USerModel } from "@/models";
 import { useStore } from "@/store";
-
-const columns = [
-  { field: "id", headerName: "ID", width: 90 },
-  {
-    field: "name",
-    headerName: "Name",
-    width: 150,
-    editable: false,
-  },
-  {
-    field: "username",
-    headerName: "User name",
-    width: 150,
-    editable: false,
-  },
-  {
-    field: "email",
-    headerName: "Email",
-    width: 350,
-    editable: false,
-  },
-  {
-    field: "phone",
-    headerName: "Phone",
-    sortable: false,
-    width: 160,
-  },
-];
-
+import { UserModel } from "@/models/user.model";
 export interface IHomeProps {
-  data?: any;
   isLoading?: boolean;
-  columns?: any;
 }
 
 const withHome = (Component: React.FC<IHomeProps>) => (props: any) => {
   const { setUser } = useStore();
-  const { data, isLoading } = useApiQuery<USerModel[]>({
+  const { isLoading } = useApiQuery<UserModel[]>({
     key: ["users"],
     url: "/users",
     method: "get",
     queryOptions: {
       refetchOnWindowFocus: false,
       staleTime: Infinity,
+      onSuccess: (data) => setUser(data),
     },
   });
 
-  useEffect(() => {
-    if (data) setUser(data);
-  }, [data]);
-
   const actions = {
     isLoading,
-    columns,
   };
 
   return <Component {...actions} {...props} />;

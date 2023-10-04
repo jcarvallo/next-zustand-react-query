@@ -2,9 +2,7 @@ import type {
   UseQueryOptions,
   UseMutationOptions,
 } from "@tanstack/react-query";
-
-
-type ApiFetchModel = {
+export interface ApiFetchModel {
   key: Array<string>;
   queryOptions?: UseQueryOptions;
   mutationOptions?: UseMutationOptions;
@@ -16,4 +14,3 @@ type ApiFetchModel = {
   headers?: any;
 };
 
-export default ApiFetchModel;
